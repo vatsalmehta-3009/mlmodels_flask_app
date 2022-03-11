@@ -1,0 +1,38 @@
+<html>
+    <body>
+<a href="http://127.0.0.1:5000/">Home</a> <br>
+Purchase Prediction: <br>
+Prediction value 1 Implies Purchased <br>
+Prediction value 0 Implies Not Purchased <br>
+ <br> 
+<form action="http://127.0.0.1:5000/LGRP" method="POST">
+Enter Age:
+<input type="number" name="age" id="age"> <br>
+Enter salary:
+<input type="number" name="salary" id="salary"> <br>
+Enter Gender:
+<select name="gender" id="gender">
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+</select> <br>
+<button type="submit">Predict</button>
+
+<a href="http://127.0.0.1:5000/LGRH">
+    Past predictions
+</a>
+</form>
+{% if pred %}
+Prediction Value: {{ pred}}
+{% endif %}
+</body>
+<script>
+    var queryString = window.location.search;
+    var urlParams = new URLSearchParams(queryString);
+    var age = urlParams.get('age');
+    var salary = urlParams.get('sal');
+    var gender = urlParams.get('gender');
+    document.querySelector('#age').value = age;
+    document.querySelector('#salary').value = salary;
+    document.querySelector('#gender').value = gender;
+</script>
+</html>

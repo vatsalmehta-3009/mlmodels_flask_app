@@ -1,0 +1,27 @@
+<table class="table table-bordered" border="2">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>years of experience</th>
+            <th>Salary</th>
+            <th>Operation</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in rows %}    
+        <tr>
+            
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+            <td>{{row[2]}}</td>
+            <td>
+               <a href="http://127.0.0.1:5000/LRD"><input type="hidden" name="id" value="{{row[0]}}">Delete</a> 
+               <a href="http://127.0.0.1:5000/LRE">Edit</a>
+            </td>
+            <input type="hidden" name="id" value="{{row[0]}}">
+            <!-- <input type="hidden" name="yoe" value="{{row[0]}}"> -->
+            <!-- <input type="hidden" name="id" value="{{row[0]}}"> -->
+        </tr>   
+        {% endfor %}    
+    </tbody>
+</table>

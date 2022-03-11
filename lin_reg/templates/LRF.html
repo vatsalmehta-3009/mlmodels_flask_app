@@ -1,0 +1,28 @@
+<html>
+    <body>
+    <a href="http://127.0.0.1:5000/">Home</a> <br>
+Salary Prediction: <br>
+Training on: 30 records <br>
+Tested on  : 05 records <br> <br>
+<form action="http://127.0.0.1:5000/LRP" method="POST">
+Enter Years of Exp:
+<input type="number" name="yoe" id="yoe">
+
+<button type="submit">Predict</button>
+
+<a href="http://127.0.0.1:5000/LRH">
+    Past predictions
+     
+</a>
+</form>
+{% if prediction %}
+Salary for {{ yoe }} years of experience, will be approximately {{prediction }}Rs
+{% endif %}
+</body>
+<script>
+    var queryString = window.location.search;
+    var urlParams = new URLSearchParams(queryString);
+    var product = urlParams.get('yoe');
+    document.querySelector('#yoe').value = product;
+</script>
+</html>

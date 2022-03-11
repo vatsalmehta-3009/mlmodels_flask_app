@@ -1,0 +1,39 @@
+<html>
+<body>
+<a href="http://127.0.0.1:5000/">Home</a> <br>
+Purchase Prediction: <br>
+###Model Interpretation <br>
+#Cluster 1 (Red Color) -> earning high but spending less <br>
+#cluster 2 (Blue Colr) -> average in terms of earning and spending  <br>
+#cluster 3 (Green Color) -> earning high and also spending high [TARGET SET] <br>
+#cluster 4 (cyan Color) -> earning less but spending more <br>
+#Cluster 5 (magenta Color) -> Earning less , spending less <br> <br> <br>
+{% if pred %}
+PREDICTED CLUSTER NUMBER:{{pred}} 
+{% endif %}  <br> <br>
+<form action="http://127.0.0.1:5000/KMP" method="POST">
+Enter Annual Income (k$):
+<input type="number" name="annual_inc" id = 'annual_inc'> <br>
+Enter Spending Score (1-100):
+<input type="number" name="spending_score" id = 'spending_score'> <br>
+
+
+<button type="submit">Predict</button>
+
+<a href="http://127.0.0.1:5000/KMH">
+    Past predictions
+</a>
+</form>    
+</body>
+<script>
+    var queryString = window.location.search;
+    var urlParams = new URLSearchParams(queryString);
+    var annual_inc = urlParams.get('annual_inc');
+    var spending_score = urlParams.get('spending_score');
+    //var gender = urlParams.get('gender');
+    document.querySelector('#annual_inc').value = annual_inc;
+    document.querySelector('#spending_score').value = spending_score;
+    //document.querySelector('#gender').value = gender;
+</script>
+
+</html>
